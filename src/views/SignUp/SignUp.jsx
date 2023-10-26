@@ -25,19 +25,23 @@ const SignUp = () => {
 
   const handleSubmit = async () => {
     //Check Password and Repassword
+    if (FormData.UserPassword.length < 6) {
+      setErrorMessage("Password must be at least 6 characters");
+      return;
+    }
     if (FormData.UserPassword !== FormData.RePassword) {
       setErrorMessage("Password and Re-Password do not match");
       return;
     }
 
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://keepfit-backend.onrender.com/auth/register",
         FormData
       );
       navigate("/login");
 
-      console.log("Data saved successfully:", response.data);
+      console.log("Data saved successfully:");
     } catch (error) {
       console.error("Error saving data:", error);
       setErrorMessage("Error saving data. Please try again.");
