@@ -80,6 +80,7 @@ const email = await user.useremail
           ActivityImage: previewSource,
           UserId: userId,
           UserEmail: email,
+          ActivityDate : activityDate
         }
       );
       console.log("Activity created:", response.data);
@@ -106,6 +107,7 @@ const email = await user.useremail
         ActivityImage: previewSource,
         UserId: userId,
         UserEmail: userEmail,
+        ActivityDate : activityDate
       });
       setCheckAddActivity("failed");
       toast.error("add activity failed");

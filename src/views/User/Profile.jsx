@@ -38,7 +38,6 @@ const Profile = () => {
           setUserDate(res.data.UserDateOfBirth)
           setGender(res.data.Gender)
 
-          console.log("data in profile => ", res.data);
   
         })
         .catch((err) => console.error(err));
@@ -47,7 +46,6 @@ const Profile = () => {
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
   };
-  const idToken = localStorage.token;
   const userEmail = localStorage.userEmail;
   
 

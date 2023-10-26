@@ -25,7 +25,6 @@ const Dashboard = () => {
           setUserHeight(res.data.Height)
           setUserName(res.data.UserEmail)
           setUserImage(res.data.UserImage)
-          console.log("data in Dashboard => ", res.data);
   
         })
         .catch((err) => console.error(err));

@@ -30,7 +30,6 @@ function App() {
   if (idToken) {
     currentUser(idToken)
       .then((res) => {
-        console.log("data in App => ", res.data);
         dispatch({
           type: "LOGIN",
           payload: {
