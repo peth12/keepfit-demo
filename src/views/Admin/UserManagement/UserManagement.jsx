@@ -33,6 +33,20 @@ const UserManagement = () => {
         .catch((err) => console.error(err));
     }
   };
+
+  const changeDateFormat = (query) => {
+    const dateData = new Date(query);
+    const date = new Date()
+    return {
+      date: dateData.getDate(),
+      mont: dateData.getMonth(),
+      year: dateData.getFullYear(),
+      all: dateData.toDateString(),
+      birthday: date.getFullYear() - dateData.getFullYear(),
+      getAll : `${ dateData.getDate()}-${dateData.getMonth()}-${dateData.getFullYear()}`
+    };
+  };
+  
   return (
     <LayoutAdmin>
         <Toaster position="top-right" reverseOrder={false} />
@@ -65,7 +79,7 @@ const UserManagement = () => {
                   <td className="w-1/5 border border-r">{item.Userfname}</td>
                   <td className="w-1/5 border border-r">{item.Userlname}</td>
                   <td className="w-1/5 border border-r">{item.UserEmail}</td>
-                  <td className="w-1/5 border border-r">{item.UserDateOfBirth}</td>
+                  <td className="w-1/5 border border-r">{changeDateFormat(item.UserDateOfBirth).all}</td>
                   <td className="border-r flex gap-2">
                     <Link to={`/admin/user/edit/${item._id}`}>
                       <button className="h-full px-3 text-sm font-medium text-center inline-flex items-center rounded-lg gap-1 bg-blue-500 hover:bg-blue-600 text-white">
