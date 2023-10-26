@@ -13,7 +13,7 @@ function UserCard(props) {
         </div>
         <div className="text-center text-black mt-4">
 
-          <p className="">UserEmail {userName}</p>
+          <p className="">UserEmail : {userName}</p>
           <div className="w-full flex justify-around pt-10 gap-5">
             <p className="">Height : {userHeight}</p>
             <p className="">Weight :{userWeight}</p>
