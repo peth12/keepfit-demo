@@ -8,7 +8,8 @@ import { FaRunning } from "react-icons/fa";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { currentUser } from "../../function/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 
 const AddActivityForm = ({
   toggleFormVisibility,
@@ -17,6 +18,7 @@ const AddActivityForm = ({
 }) => {
   const { activityList } = useData();
   const [newActivity, setNewActivity] = useState([]);
+  const { user } = useSelector((state) => ({ ...state }));
 
   const [activityName, setActivityName] = useState("");
   const [activityDesc, setActivityDesc] = useState("");
@@ -64,26 +66,9 @@ const AddActivityForm = ({
     UserId: 1,
   });
 
-  if (idToken) {
-    currentUser(idToken)
-      .then((res) => {
-        console.log("data in history ", res.data);
-        dispatch({
-          type: "LOGIN",
-          payload: {
-            token: res.data.token,
-            userEmail: res.data.UserEmail,
-            userRole: res.data.UserRole,
-          },
-        });
-        setUserEmail(res.data.UserEmail)
-      })
-      .catch((err) => console.error(err));
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+const email = await user.useremail
     try {
       const response = await axios.post(
         "https://keepfit-backend.onrender.com/activity/create",
@@ -94,7 +79,7 @@ const AddActivityForm = ({
           ActivityDuration: activityDuration,
           ActivityImage: previewSource,
           UserId: userId,
-          UserEmail: userEmail,
+          UserEmail: email,
         }
       );
       console.log("Activity created:", response.data);

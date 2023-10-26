@@ -19,50 +19,28 @@ import toast, { Toaster } from "react-hot-toast";
 import { Fade } from "react-awesome-reveal";
 import { useDispatch } from "react-redux";
 import { currentUser } from "../../function/auth";
-import {GiBoxingGlove} from 'react-icons/gi'
+import { GiBoxingGlove } from "react-icons/gi";
+import { useSelector } from "react-redux";
 
 function History() {
+  const { user } = useSelector((state) => ({ ...state }));
   const { id } = useParams();
   const [activity, setActivity] = useState([]);
   const [activityType, setActivityType] = useState([]);
   const [userById, setUserById] = useState([]);
   const [reload, setReload] = useState(false);
   const [filterDataType, setFilterDataType] = useState([]);
-  const [userEmail, setUserEmail] = useState("");
-
-  const idToken = localStorage.token;
-  const emailUser = localStorage.userEmail;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (idToken) {
-      currentUser(idToken)
-        .then((res) => {
-          console.log("data in history ", res.data);
-          dispatch({
-            type: "LOGIN",
-            payload: {
-              token: res.data.token,
-              userEmail: res.data.UserEmail,
-              userRole: res.data.UserRole,
-            },
-          });
-          setUserEmail(res.data.UserEmail);
-        })
-        .catch((err) => console.error(err));
-    }
-  });
 
   useEffect(() => {
     axios
-      .post("https://keepfit-backend.onrender.com/activity", {
-        UserEmail: emailUser,
+      .post(`https://keepfit-backend.onrender.com/activity`, {
+        UserEmail: user.useremail,
       })
       .then((result) => setActivity(result.data))
 
       .catch((err) => console.log(err));
     axios
-      .get("https://keepfit-backend.onrender.com/activityType")
+      .get(`https://keepfit-backend.onrender.com/activityType`)
       .then((result) => setActivityType(result.data))
       .catch((err) => console.log(err));
   }, [reload]);
@@ -291,7 +269,7 @@ function History() {
                       </p>
                     </h3>
 
-                    <img src="./assets/trash_ja.png" alt="" />
+                    <img src="/trash_ja.png" alt="" />
                     <p className="py-4 text-center  ">
                       Deleting this activity will permanently remove it from
                       your workout record. Are you sure you want to delete this

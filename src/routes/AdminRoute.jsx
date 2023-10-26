@@ -5,7 +5,7 @@ import LoadingToRedirect from './LoadingToRedirect'
 const AdminRoute = ({children}) => {
     const { user } = useSelector((state)=> ({...state}))
 
-  return  user  && user.userRole == "admin" ? children : <LoadingToRedirect/>
+  return  user  && user.role == "admin" ? children : <LoadingToRedirect/>
    
 }
 

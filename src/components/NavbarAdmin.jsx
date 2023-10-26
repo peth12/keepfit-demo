@@ -9,11 +9,11 @@ export const NavbarAdmin = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const logout = () => {
+    navigate("/login");
     dispatch({
       type: "LOGOUT",
       payload: null,
     });
-    navigate("/login");
   };
   
   return (

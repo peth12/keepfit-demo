@@ -13,7 +13,7 @@ const AddWorkout = () => {
   const createActicityType = async () => {
     
     await axios
-      .post(`https://keepfit-backend.onrender.com/activityType/create`, {
+      .post(`${import.meta.env.VITE_API_URL}activityType/create`, {
         ActivityTypeName: activityTypeName,
         ActivityTypeImage: previewSource,
         ActivityTypeDesc: activityTypeDesc,

@@ -2,43 +2,37 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { FaMedal  } from "react-icons/fa";
 import { FaChartPie, FaDumbbell } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 import { currentUser } from "../function/auth";
-import { useState } from "react";
-import { useNavigate} from 'react-router-dom'
 
 
 export const Navbar = () => {
-  const [image, setImage] = useState("")
-  const idToken = localStorage.token;
-  const dispatch = useDispatch();
-  const navigate = useNavigate()
-
+  const { user } = useSelector((state) => ({ ...state }));
+  const dispatch = useDispatch()
   const logout = () => {
     dispatch({
       type: "LOGOUT",
       payload: null,
     });
-    navigate("/login");
-  };
-  
-  if (idToken) {
-    currentUser(idToken)
-      .then((res) => {
-
-        console.log("data in profile ", res.data);
-        setImage(res.data.UserImage)
-        dispatch({
-          type: "LOGIN",
-          payload: {
-            token: res.data.token,
-            userEmail: res.data.UserEmail,
-            userRole: res.data.UserRole,
-          },
-        });
-      })
-      .catch((err) => console.error(err));
   }
+  useEffect(() => {
+    if (user.token) {
+      currentUser(user.token)
+        .then((res) => {
+
+
+          setImage(res.data.UserImage)
+          console.log("data in Dashboard => ", res.data);
+  
+        })
+        .catch((err) => console.error(err));
+    }
+  },[])
+
+  const [image, setImage] = useState(user)
+
+  
   return (
     <nav className="flex justify-center ">
       <div
@@ -115,12 +109,12 @@ export const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to={"/user"}>
+                <Link to={"/profile"}>
                   <a className="justify-between">Profile</a>
                 </Link>
               </li>
               <li className="text-red-600">
-                <Link onClick={logout}>
+                <Link onClick={logout} >
                   <a>Logout</a>
                 </Link>
               </li>

@@ -7,7 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 // redux
 import { useDispatch } from "react-redux";
 
-export const Login = () => {
+const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,7 +25,7 @@ export const Login = () => {
 
   const handleLogin = () => {
     if (userEmail == "" && userPassword == "") {
-      toast.error("please input data");
+      toast.error("Please check your input data");
       return;
     }
     axios
@@ -40,8 +40,8 @@ export const Login = () => {
           navigate("/dashboard");
           dispatch({ type: "LOGIN", payload: {
             token:result.data.token,
-            userEmail: result.data.payload.user.UserEmail,
-            userRole: result.data.payload.user.UserRole,
+            useremail: result.data.payload.user.UserEmail,
+            role: result.data.payload.user.UserRole,
         } });
         localStorage.setItem('token', result.data.token)
         localStorage.setItem('userEmail', result.data.payload.user.UserEmail)
@@ -64,7 +64,7 @@ export const Login = () => {
       .catch((err) => {
         
         console.error(err)
-        toast.error("Login fail 🟥", {
+        toast.error("Wrong email or password ❌", {
           autoClose: 5000,
           hideProgressBar: true,
           closeOnClick: false,
@@ -135,3 +135,4 @@ export const Login = () => {
     </>
   );
 };
+export default Login

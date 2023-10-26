@@ -8,8 +8,8 @@ const UserRoute = ({children}) => {
 
     const { user } = useSelector((state)=> ({...state}))
 
-  return  user && user.userRole == "user" ? children : <LoadingToRedirect/>
+  return  user && user.token ? children : <LoadingToRedirect/>
   
 }
 
-export default UserRoute
+export default UserRoute 

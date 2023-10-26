@@ -70,7 +70,7 @@ const DashboardData = ({children}) => {
 
   return (
     <>
-      <DashboardDataContext.Provider value={{ duration, running, swimming, boxing, cycling, yoga }}>
+      <DashboardDataContext.Provider value={{ duration, running, swimming, boxing, cycling, yoga  }}>
         {children}
       </DashboardDataContext.Provider>
     </>

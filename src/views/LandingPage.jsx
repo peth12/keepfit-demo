@@ -7,7 +7,7 @@ import { GiBodyBalance } from "react-icons/gi";
 import { GiBoxingGlove } from "react-icons/gi";
 import { FaRunning } from "react-icons/fa";
 
-export const LandingPage = () => {
+const LandingPage = () => {
   return (
     <>
       <NavbarLandingPage />
@@ -23,11 +23,11 @@ export const LandingPage = () => {
               />
             </Zoom>
 
-            <div className="md:w-[50%] w-full md:h-full h-1/2 absolute md:top-0 top-1/2 right-0 backdrop-blur-md bg-opacity-30 bg-white flex flex-col md:justify-center justify-start lg:gap-8 md:gap-4 gap-2 lg:px-20 md:px-6 px-4 overflow-x-hidden">
-              <h1 className="lg:text-6xl md:text-4xl text-4xl md:mt-10 mt-10 text-zinc-100 font-extrabold flex italic">
-                <Slide direction="right" className="bg-primary p-3">
-                  <span className="text-[#303030]">
-                    Keep <span className="text-zinc-100">Fit</span>
+            <div className="md:w-[50%] w-full md:h-full h-1/2 absolute md:top-0 top-1/2 right-0 backdrop-blur-md bg-opacity-30 bg-white flex flex-col md:justify-center justify-start lg:gap-8 md:gap-4 gap-2 lg:px-20 md:px-6 px-4 overflow-x-hidden ">
+              <h1 className="lg:text-8xl md:text-4xl text-4xl md:mt-10 mt-10 text-zinc-100 font-extrabold flex italic">
+                <Slide direction="right" className=" p-3">
+                  <span className="text-[#171717]">
+                    Keep<span className="text-primary">Fit</span>
                   </span>
                 </Slide>
               </h1>
@@ -229,7 +229,7 @@ export const LandingPage = () => {
                 </div>
 
                 <div className="flex flex-col justify-start bg-zinc-950 border-b-4 border-red-500 h-full">
-                  <img className="w-full h-h-56" src="historys.png" />
+                  <img className="w-full h-h-56" src="history.png" />
                   <div className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
                     <span className="text-amber-500 text-xl group-hover:underline font-semibold uppercase">
                       My Activity
@@ -252,3 +252,4 @@ export const LandingPage = () => {
     </>
   );
 };
+export default LandingPage

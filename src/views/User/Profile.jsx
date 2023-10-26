@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import { Layout } from "../../components/Layout";
 import { FaUserAstronaut } from "react-icons/fa";
 import "./User.css";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { currentUser } from "../../function/auth";
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
@@ -22,43 +22,34 @@ const Profile = () => {
   const [reload, setReload] =useState(false)
 
   const navigate = useNavigate()
+  const { user } = useSelector((state) => ({ ...state }));
 
+  useEffect(() => {
+    if (user.token) {
+      currentUser(user.token)
+        .then((res) => {
+          setUserId(res.data._id)
+          setWeight(res.data.Weight)
+          setHeight(res.data.Height)
+          setEmail(res.data.UserEmail)
+          setImage(res.data.UserImage)
+          setFirstName(res.data.Userfname)
+          setLastName(res.data.Userlname)
+          setUserDate(res.data.UserDateOfBirth)
+          setGender(res.data.Gender)
 
+          console.log("data in profile => ", res.data);
+  
+        })
+        .catch((err) => console.error(err));
+    }
+  },[])
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
   };
   const idToken = localStorage.token;
   const userEmail = localStorage.userEmail;
-  const dispatch = useDispatch();
   
-useEffect(()=> {
-  if (idToken) {
-    currentUser(idToken)
-      .then((res) => {
-
-        console.log("data in profile ", res.data);
-        setUserId(res.data._id)
-        setFirstName(res.data.Userfname)
-        setLastName(res.data.Userfname)
-        setWeight(res.data.Weight)
-        setHeight(res.data.Height)
-        setGender(res.data.Gender)
-        setEmail(res.data.UserEmail)
-        setImage(res.data.UserImage)
-        setUserDate(res.data.UserDateOfBirth)
-        dispatch({
-          type: "LOGIN",
-          payload: {
-            token: res.data.token,
-            userEmail: res.data.UserEmail,
-            userRole: res.data.UserRole,
-          },
-        });
-      })
-      .catch((err) => console.error(err));
-  }
-
-}, [reload])
 
   const changeDateFormat = (query) => {
     const dateData = new Date(query);
@@ -89,7 +80,7 @@ useEffect(()=> {
       })
       .then((res) => {
         console.log(res);
-        navigate("/user");
+        navigate("/profile");
          toggleEditMode();
 
         setTimeout(() => {

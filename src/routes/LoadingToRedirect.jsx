@@ -13,7 +13,7 @@ const LoadingToRedirect = () => {
     count === 0 && navigate('/login')
     return () => clearInterval(interval)
   }, [count] );
-  return <div className="pt-20">No permission redirect in {count}</div>;
+  return <div className="pt-20"></div>;
 };
 
 export default LoadingToRedirect;

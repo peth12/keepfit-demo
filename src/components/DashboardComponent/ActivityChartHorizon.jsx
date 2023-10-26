@@ -6,8 +6,6 @@ import { useData } from "../ActivityComponent/ActivityData";
 import { Tooltip } from "chart.js";
 
 const ActivityChartHorizon = () => {
-    const {activityList} = useData()
-    const {duration, running, swimming, boxing, cycling, yoga} = useData()
 
   Chart.register(LinearScale, CategoryScale, BarElement, Tooltip);
 

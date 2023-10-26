@@ -23,11 +23,11 @@ const ActivityManagement = () => {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("https://keepfit-backend.onrender.com/activity")
+      .get(`https://keepfit-backend.onrender.com/activity`)
       .then((result) => setUser(result.data))
       .catch((err) => console.log(err));
     axios
-      .get("https://keepfit-backend.onrender.com/user")
+      .get(`https://keepfit-backend.onrender.com/user`)
       .then((result) => setUserSelect(result.data))
       .catch((err) => console.log(err));
   }, [reload]);

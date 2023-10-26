@@ -23,7 +23,7 @@ const EditUserPage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://keepfit-backend.onrender.com/user/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}user/${id}`)
       .then((result) => {
         setUserfname(result.data.Userfname);
         setUserlname(result.data.Userlname);
@@ -42,7 +42,7 @@ const EditUserPage = () => {
   const updateUser = async (e) => {
     e.preventDefault();
     await axios
-      .put(`https://keepfit-backend.onrender.com/user/update/${id}`, {
+      .put(`${import.meta.env.VITE_API_URL}user/update/${id}`, {
         Userfname: userfname,
         Userlname: userlname,
         UserDateOfBirth: userDateOfBirth,
