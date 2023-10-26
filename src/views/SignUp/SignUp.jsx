@@ -181,6 +181,7 @@ const SignUp = () => {
                   value={FormData.UserEmail}
                   onChange={handleInputChange}
                   className="input input-bordered w-80"
+                  required
                 />
               </div>
               <div className="form-control pb-4">
@@ -196,6 +197,7 @@ const SignUp = () => {
                   value={FormData.UserPassword}
                   onChange={handleInputChange}
                   className="input input-bordered w-80"
+                  required
                 />
               </div>
               <div className="form-control pb-4">
@@ -211,6 +213,7 @@ const SignUp = () => {
                   onChange={handleInputChange}
                   placeholder="Enter password"
                   className="input input-bordered w-80"
+                  required
                 />
               </div>
 
