@@ -175,7 +175,7 @@ const SignUp = () => {
                   </span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   name="UserEmail"
                   placeholder="Enter Email"
                   value={FormData.UserEmail}
