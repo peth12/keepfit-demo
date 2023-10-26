@@ -42,7 +42,7 @@ const EditUserPage = () => {
   const updateUser = async (e) => {
     e.preventDefault();
     await axios
-      .put(`${import.meta.env.VITE_API_URL}user/update/${id}`, {
+      .put(`https://keepfit-backend.onrender.com/user/update/${id}`, {
         Userfname: userfname,
         Userlname: userlname,
         UserDateOfBirth: userDateOfBirth,
