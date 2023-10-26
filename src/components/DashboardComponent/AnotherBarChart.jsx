@@ -95,29 +95,7 @@ const DurationChart = () => {
             weight: 900,
           },
         },
-      },
-      xAxes: [ {
-        type: 'time',
-        display: true,
-        scaleLabel: {
-          display: true,
-          labelString: 'Date'
-        },
-        ticks: {
-          major: {
-            fontStyle: 'bold',
-            fontColor: '#FF0000'
-          }
-        }
-      } ],
-      yAxes: [ {
-        type:"",
-        display: true,
-        scaleLabel: {
-          display: true,
-          labelString: 'value'
-        }
-      } ]
+      }
     },
     responsive: false,
     maintainAspectRatio: true,
