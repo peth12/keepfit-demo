@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Layout } from "../../components/Layout";
-import "./dashboard.css";
+import "./Dashboard.css";
 import { UserCard, DurationStackCard } from "../../components";
 import DurationChart from "../../components/DashboardComponent/DurationChart";
 import ActivityChartHorizon from "../../components/DashboardComponent/ActivityChartHorizon";
