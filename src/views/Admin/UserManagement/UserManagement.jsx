@@ -53,7 +53,7 @@ const UserManagement = () => {
                 <th className="w-1/5 border border-r">Firstname</th>
                 <th className="w-1/5 border border-r">Lastname</th>
                 <th className="w-1/5 border border-r">Email</th>
-                <th className="w-1/5 border border-r">Registered date</th>
+                <th className="w-1/5 border border-r">Date Of Birth</th>
                 <th className="w-1/5 border border-r">Actions</th>
               </tr>
             </thead>
@@ -65,7 +65,7 @@ const UserManagement = () => {
                   <td className="w-1/5 border border-r">{item.Userfname}</td>
                   <td className="w-1/5 border border-r">{item.Userlname}</td>
                   <td className="w-1/5 border border-r">{item.UserEmail}</td>
-                  <td className="w-1/5 border border-r">{item.Userfname}</td>
+                  <td className="w-1/5 border border-r">{item.UserDateOfBirth}</td>
                   <td className="border-r flex gap-2">
                     <Link to={`/admin/user/edit/${item._id}`}>
                       <button className="h-full px-3 text-sm font-medium text-center inline-flex items-center rounded-lg gap-1 bg-blue-500 hover:bg-blue-600 text-white">
